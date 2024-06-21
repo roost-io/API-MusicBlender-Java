@@ -110,7 +110,7 @@ class UserAccountControllerFindUserByIdTest {
         String validId = "1";
         User_Credentials expectedUser = new User_Credentials();
         expectedUser.setId(1);
-        when(userAccRepo.findById(1)).thenReturn(Optional.of(expectedUser));
+      //  when(userAccRepo.findById(1)).thenReturn(Optional.of(expectedUser));
         
         User_Credentials result = userAccountController.findUserById(validId);
         
@@ -122,7 +122,7 @@ class UserAccountControllerFindUserByIdTest {
     @Test
     void nonExistentUserId() {
         String nonExistentId = "999";
-        when(userAccRepo.findById(999)).thenReturn(Optional.empty());
+        //when(userAccRepo.findById(999)).thenReturn(Optional.empty());
         
         User_Credentials result = userAccountController.findUserById(nonExistentId);
         
@@ -144,7 +144,7 @@ class UserAccountControllerFindUserByIdTest {
     @Test
     void largeIntegerId() {
         String largeId = String.valueOf(Integer.MAX_VALUE);
-        when(userAccRepo.findById(Integer.MAX_VALUE)).thenReturn(Optional.empty());
+      //  when(userAccRepo.findById(Integer.MAX_VALUE)).thenReturn(Optional.empty());
         
         userAccountController.findUserById(largeId);
         
@@ -158,7 +158,7 @@ class UserAccountControllerFindUserByIdTest {
             assertThrows(exceptionClass, () -> userAccountController.findUserById(id));
         } else {
             int intId = Integer.parseInt(id);
-            when(userAccRepo.findById(intId)).thenReturn(Optional.empty());
+          //  when(userAccRepo.findById(intId)).thenReturn(Optional.empty());
             assertDoesNotThrow(() -> userAccountController.findUserById(id));
             verify(userAccRepo).findById(intId);
         }
