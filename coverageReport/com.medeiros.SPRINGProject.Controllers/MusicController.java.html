@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MusicController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SPRINGProject</a> &gt; <a href="index.source.html" class="el_package">com.medeiros.SPRINGProject.Controllers</a> &gt; <span class="el_source">MusicController.java</span></div><h1>MusicController.java</h1><pre class="source lang-java linenums">package com.medeiros.SPRINGProject.Controllers;
+
+import com.medeiros.SPRINGProject.Models.LogModel;
+import com.medeiros.SPRINGProject.Models.LogRepository;
+import com.medeiros.SPRINGProject.Models.MusicModel;
+import com.medeiros.SPRINGProject.Models.MusicRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping(&quot;/music&quot;)
+<span class="nc" id="L12">public class MusicController {</span>
+
+    @Autowired
+    LogRepository Log;
+    @Autowired
+    MusicRepository MusicRepo;
+
+<span class="nc" id="L19">    LogModel Date = new LogModel();</span>
+
+    @PostMapping(path=&quot;/create/{Userid}&quot;)
+    public String createMusic(@RequestParam(name=&quot;MusicDescription&quot;) String MusicDescription,
+                       @RequestParam(name=&quot;MusicName&quot;) String MusicName,
+                       @RequestParam(name=&quot;Music&quot;) String Music, @PathVariable int Userid
+                       ){
+<span class="nc" id="L26">        MusicModel newMusic = new MusicModel(Userid , MusicName , Music , MusicDescription );</span>
+<span class="nc" id="L27">        MusicRepo.save(newMusic);</span>
+<span class="nc" id="L28">        return &quot;Operação Feita&quot;;</span>
+    }
+
+    @DeleteMapping(path=&quot;/delete/{id}&quot;)
+    public String deleteMusic(@PathVariable int id){
+<span class="nc" id="L33">            MusicRepo.deleteById(id);</span>
+<span class="nc" id="L34">            return &quot;Deletado&quot;;</span>
+
+    }
+
+
+    @GetMapping(path=&quot;/findMusicBy/{id}&quot;)
+    public MusicModel findMusicBy(@PathVariable int id){
+<span class="nc" id="L41">        return MusicRepo.findById(id);</span>
+    }
+
+
+
+    @PostMapping(path=&quot;/update/{id}&quot;)
+    public String updateMusicById(@PathVariable int id ,
+                                  @RequestParam(name=&quot;MusicName&quot;) String MusicName,
+                                  @RequestParam(name=&quot;MusicDescription&quot;) String MusicDescription,
+                                  @RequestParam(name=&quot;Music&quot;) String Music
+                                  ){
+<span class="nc" id="L52">        MusicModel musicToUpdate = MusicRepo.findById(id);</span>
+<span class="nc" id="L53">        musicToUpdate.setMusic(Music);</span>
+<span class="nc" id="L54">        musicToUpdate.setMusicDescription(MusicDescription);</span>
+<span class="nc" id="L55">        musicToUpdate.setMusicName(MusicName);</span>
+<span class="nc" id="L56">        MusicRepo.save(musicToUpdate);</span>
+<span class="nc" id="L57">        return &quot;Música Alterada!&quot;;</span>
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserAccountController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SPRINGProject</a> &gt; <a href="index.source.html" class="el_package">com.medeiros.SPRINGProject.Controllers</a> &gt; <span class="el_source">UserAccountController.java</span></div><h1>UserAccountController.java</h1><pre class="source lang-java linenums">package com.medeiros.SPRINGProject.Controllers;
+
+import com.medeiros.SPRINGProject.Models.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
+import java.util.Objects;
+import java.util.Optional;
+
+@RestController
+@RequestMapping(&quot;/user&quot;)
+<span class="fc" id="L13">public class UserAccountController {</span>
+    @Autowired
+    UserAccRepository UserAccRepo;
+    @Autowired
+    UserInfoRepository UserInfoRepo;
+    @Autowired
+    LogRepository Log;
+<span class="fc" id="L20">    LogModel Date = new LogModel();</span>
+
+    @GetMapping(path=&quot;/findUser&quot;)
+    public User_Credentials findUserById(@RequestParam(name = &quot;id&quot;) String ID){
+<span class="fc" id="L24">        int intID = Integer.parseInt(ID);</span>
+<span class="fc" id="L25">        return UserAccRepo.findById(intID);</span>
+    }
+    @DeleteMapping(path=&quot;/delete&quot;)
+    public String deleteUserById(@RequestParam(name=&quot;id&quot;) String ID){
+<span class="fc" id="L29">        int intID = Integer.parseInt(ID);</span>
+<span class="fc" id="L30">        UserAccRepo.deleteById(intID);</span>
+<span class="fc" id="L31">        return &quot;Conta Deletada&quot;;</span>
+    }
+    @PostMapping(path=&quot;/update&quot;)
+    public String updateUserById(@RequestParam(name=&quot;id&quot;)String id,
+                                 @RequestParam(name=&quot;email&quot;)String email,
+                                 @RequestParam(name=&quot;password&quot;)String password,
+                                 @RequestParam(name=&quot;username&quot;)String username)
+    {
+<span class="nc" id="L39">        int intID = Integer.parseInt(id);</span>
+<span class="nc" id="L40">        User_Credentials userExist = UserAccRepo.findById(intID);</span>
+<span class="nc bnc" id="L41" title="All 2 branches missed.">        if(userExist != null){</span>
+<span class="nc" id="L42">            userExist.setEmail(email);</span>
+<span class="nc" id="L43">            userExist.setPassword(password);</span>
+<span class="nc" id="L44">            userExist.setUsername(username);</span>
+<span class="nc" id="L45">            UserAccRepo.save(userExist);</span>
+<span class="nc" id="L46">            return &quot;Usuário Salvo&quot;;</span>
+        }else{
+<span class="nc" id="L48">            return &quot;User não encontrado&quot;;</span>
+        }
+
+    }
+
+
+    @PostMapping(path=&quot;/createInfo/{userId}&quot;)
+    public String updateInfoUserBy(@PathVariable int userId,
+                                   @RequestParam(name=&quot;photoURL&quot;)String photoURL,
+                                   @RequestParam(name=&quot;favoritesMusics&quot;)String favoritesMusics,
+                                   @RequestParam(name=&quot;gender&quot;)String gender,
+                                   @RequestParam(name=&quot;phone&quot;)String phone,
+                                   @RequestParam(name=&quot;instaURL&quot;)String instaURL,
+                                   @RequestParam(name=&quot;twitterURL&quot;)String twitterURL,
+                                   @RequestParam(name=&quot;favoritesThings&quot;)String favoritesThings){
+
+<span class="nc" id="L64">        User_Info userInfo = new User_Info(userId , photoURL ,favoritesMusics ,gender ,phone ,instaURL ,twitterURL,favoritesThings );</span>
+<span class="nc" id="L65">        UserInfoRepo.save(userInfo);</span>
+<span class="nc" id="L66">        return &quot;ATUALIZADO&quot;;</span>
+    }
+
+
+
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>

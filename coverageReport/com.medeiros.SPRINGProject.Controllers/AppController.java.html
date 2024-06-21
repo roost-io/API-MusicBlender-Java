@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AppController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SPRINGProject</a> &gt; <a href="index.source.html" class="el_package">com.medeiros.SPRINGProject.Controllers</a> &gt; <span class="el_source">AppController.java</span></div><h1>AppController.java</h1><pre class="source lang-java linenums">package com.medeiros.SPRINGProject.Controllers;
+
+import com.medeiros.SPRINGProject.Models.*;
+import com.medeiros.SPRINGProject.algorithm.algorithmBlender;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
+
+@RestController
+@RequestMapping(&quot;/app&quot;)
+<span class="nc" id="L12">public class AppController {</span>
+    @Autowired
+    MusicRepository musicRepo;
+    @Autowired
+    LogRepository Log;
+
+<span class="nc" id="L18">    LogModel Date = new LogModel();</span>
+    @Autowired
+    CommentsRepository CommentsRepo;
+<span class="nc" id="L21">    algorithmBlender ab = new algorithmBlender();</span>
+    @GetMapping(&quot;/feed&quot;)
+    public  Map&lt;String, Integer&gt; showMusics(){
+<span class="nc" id="L24">        Iterable&lt;MusicModel&gt; listMusic = musicRepo.findAll();</span>
+        //return (Iterable&lt;MusicModel&gt;) ab.algorithmCalc(listMusic);
+
+<span class="nc" id="L27">        return ab.algorithmCalc(listMusic);</span>
+    }
+
+
+    @PostMapping(path=&quot;/like/{id}&quot;)
+    public String LikeMusicById(@PathVariable int id) {
+<span class="nc" id="L33">        MusicModel musicToUpdate = musicRepo.findById(id);</span>
+<span class="nc" id="L34">        int numberLikes = musicToUpdate.getNumberOfLikes();</span>
+<span class="nc" id="L35">        musicToUpdate.setNumberOfLikes(numberLikes + 1);</span>
+<span class="nc" id="L36">        musicRepo.save(musicToUpdate);</span>
+<span class="nc" id="L37">        LogModel logData = new LogModel(&quot;app/like/{id}&quot; , &quot;App&quot; , Date.getTimeNow() );</span>
+<span class="nc" id="L38">        Log.save(logData);</span>
+<span class="nc" id="L39">        return &quot;Música Alterada!&quot;;</span>
+    }
+
+    @PostMapping(path=&quot;/comment/{id}&quot;)
+    public String CommentMusicById(@PathVariable int id) {
+<span class="nc" id="L44">        MusicModel musicToUpdate = musicRepo.findById(id);</span>
+<span class="nc" id="L45">        int numberComments = musicToUpdate.getNumberOfComents();</span>
+<span class="nc" id="L46">        musicToUpdate.setNumberOfComents(numberComments + 1);</span>
+<span class="nc" id="L47">        musicRepo.save(musicToUpdate);</span>
+<span class="nc" id="L48">        LogModel logData = new LogModel(&quot;app/comment/{id}&quot; , &quot;App&quot; , Date.getTimeNow() );</span>
+<span class="nc" id="L49">        Log.save(logData);</span>
+<span class="nc" id="L50">        return &quot;Música Alterada!&quot;;</span>
+    }
+    //Cria um comentário na Música de IdMúsic = id
+    @PostMapping(path=&quot;/createComment/{id}&quot;)
+    public String createComment(@PathVariable int id,
+                                @RequestParam(name=&quot;Comment&quot;)String Comment){
+<span class="nc" id="L56">        CommentsModel comment = new CommentsModel(Comment , id );</span>
+<span class="nc" id="L57">        CommentsRepo.save(comment);</span>
+<span class="nc" id="L58">        LogModel logData = new LogModel(&quot;app/createComment/{id}&quot; , &quot;App&quot; , Date.getTimeNow() );</span>
+<span class="nc" id="L59">        Log.save(logData);</span>
+<span class="nc" id="L60">        return Comment;</span>
+    }
+
+    @GetMapping(path=&quot;/getComments/{MusicId}&quot;)
+    public String getCommentsByMusicId(@PathVariable int MusicId){
+
+<span class="nc" id="L66">        return &quot;a&quot;;</span>
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>

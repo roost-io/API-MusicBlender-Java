@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MarketController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SPRINGProject</a> &gt; <a href="index.source.html" class="el_package">com.medeiros.SPRINGProject.Controllers</a> &gt; <span class="el_source">MarketController.java</span></div><h1>MarketController.java</h1><pre class="source lang-java linenums">package com.medeiros.SPRINGProject.Controllers;
+
+import com.medeiros.SPRINGProject.Models.LogModel;
+import com.medeiros.SPRINGProject.Models.LogRepository;
+import com.medeiros.SPRINGProject.Models.ProductModel;
+import com.medeiros.SPRINGProject.Models.ProductModelRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping(path=&quot;/product&quot;)
+<span class="nc" id="L12">public class MarketController {</span>
+    @Autowired
+    ProductModelRepository ProductRepository;
+
+    @Autowired
+    LogRepository Log;
+
+<span class="nc" id="L19">    LogModel Date = new LogModel();</span>
+
+    @PostMapping(path=&quot;/create/{userId}&quot;)
+    public String createProduct(
+                                @RequestParam(name=&quot;description&quot;) String description,
+                                @RequestParam(name=&quot;price&quot;) double price,
+                                @RequestParam(name=&quot;musicId&quot;) int musicId,
+                                @PathVariable int userId,
+                                @RequestParam(name=&quot;listproduct&quot;)String listProduct){
+
+<span class="nc" id="L29">        ProductModel product = new ProductModel(description,price,musicId,userId,listProduct);</span>
+
+<span class="nc" id="L31">        ProductRepository.save(product);</span>
+<span class="nc" id="L32">        LogModel logData = new LogModel(&quot;product/create/{userid}&quot; , &quot;Product&quot; , Date.getTimeNow() );</span>
+<span class="nc" id="L33">        Log.save(logData);</span>
+<span class="nc" id="L34">        return &quot;Produto Criado&quot;;</span>
+
+    }
+
+    @GetMapping(path=&quot;/MarketFeed&quot;)
+    public Iterable&lt;ProductModel&gt; showAllProducts(){
+
+<span class="nc" id="L41">        return ProductRepository.findAll();</span>
+
+    }
+
+    @DeleteMapping(path=&quot;/delete/{id}&quot;)
+    public String deleteProduct(@PathVariable int id){
+<span class="nc" id="L47">        ProductRepository.deleteById(id);</span>
+<span class="nc" id="L48">        return &quot;Produto Deletado&quot;;</span>
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LogModel.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SPRINGProject</a> &gt; <a href="index.source.html" class="el_package">com.medeiros.SPRINGProject.Models</a> &gt; <span class="el_source">LogModel.java</span></div><h1>LogModel.java</h1><pre class="source lang-java linenums">package com.medeiros.SPRINGProject.Models;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+import java.time.LocalDateTime;
+
+@Entity
+public class LogModel {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private int logId;
+
+    public int getLogId() {
+<span class="nc" id="L17">        return logId;</span>
+    }
+
+    public void setLogId(int logId) {
+<span class="nc" id="L21">        this.logId = logId;</span>
+<span class="nc" id="L22">    }</span>
+
+    public String getComando() {
+<span class="nc" id="L25">        return comando;</span>
+    }
+
+    public void setComando(String comando) {
+<span class="nc" id="L29">        this.comando = comando;</span>
+<span class="nc" id="L30">    }</span>
+
+    public String getClasse() {
+<span class="nc" id="L33">        return classe;</span>
+    }
+
+    public void setClasse(String classe) {
+<span class="nc" id="L37">        this.classe = classe;</span>
+<span class="nc" id="L38">    }</span>
+
+    public LocalDateTime getData() {
+<span class="nc" id="L41">        return data;</span>
+    }
+
+    public void setData(LocalDateTime data) {
+<span class="nc" id="L45">        this.data = data;</span>
+<span class="nc" id="L46">    }</span>
+
+    private String comando;
+
+    private String classe;
+
+    private LocalDateTime data;
+
+<span class="nc" id="L54">    public LogModel(String comando, String classe, LocalDateTime data){</span>
+<span class="nc" id="L55">        this.comando =comando;</span>
+<span class="nc" id="L56">        this.classe =classe;</span>
+<span class="nc" id="L57">        this.data =data;</span>
+<span class="nc" id="L58">    }</span>
+
+    public LocalDateTime getTimeNow(){
+<span class="nc" id="L61">        return LocalDateTime.now();</span>
+    }
+
+<span class="fc" id="L64">    public LogModel(){</span>
+
+<span class="fc" id="L66">    }</span>
+
+}
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>

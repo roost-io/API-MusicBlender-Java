@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>algorithmBlender.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SPRINGProject</a> &gt; <a href="index.source.html" class="el_package">com.medeiros.SPRINGProject.algorithm</a> &gt; <span class="el_source">algorithmBlender.java</span></div><h1>algorithmBlender.java</h1><pre class="source lang-java linenums">package com.medeiros.SPRINGProject.algorithm;
+
+import com.medeiros.SPRINGProject.Models.MusicModel;
+import com.medeiros.SPRINGProject.utils.hashMapFunctions;
+
+import java.util.HashMap;
+import java.util.Map;
+
+<span class="nc" id="L9">public class algorithmBlender extends algorithmData {</span>
+<span class="nc" id="L10">    algorithmData AD = new algorithmData();</span>
+
+
+
+    public Map&lt;String, Integer&gt; algorithmCalc(Iterable&lt;MusicModel&gt; listMusics){
+<span class="nc" id="L15">        HashMap&lt;String, Integer&gt; HashAlgorithm = new HashMap&lt;&gt;();</span>
+        //informacoes.put(&quot;informacao1&quot;, &quot;valor1&quot;);
+<span class="nc bnc" id="L17" title="All 2 branches missed.">        for(MusicModel itemMusic : listMusics){</span>
+<span class="nc" id="L18">            int nlikes = itemMusic.getNumberOfLikes();</span>
+<span class="nc" id="L19">            int ncoments = itemMusic.getNumberOfComents();</span>
+
+<span class="nc" id="L21">            int likesPoints = AD.rithmPointsByLike(nlikes);</span>
+<span class="nc" id="L22">            int comentsPoints = AD.rithmPointsByComents(ncoments);</span>
+
+<span class="nc" id="L24">            int rithmPoints = likesPoints + comentsPoints;</span>
+
+<span class="nc" id="L26">            String musicName = itemMusic.getMusicName();</span>
+
+<span class="nc" id="L28">            HashAlgorithm.put(musicName , rithmPoints );</span>
+
+<span class="nc" id="L30">        }</span>
+        //return hashMapFunctions.ordenarHashMapPorValor(HashAlgorithm);
+<span class="nc" id="L32">        return HashAlgorithm;</span>
+
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProductModel.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SPRINGProject</a> &gt; <a href="index.source.html" class="el_package">com.medeiros.SPRINGProject.Models</a> &gt; <span class="el_source">ProductModel.java</span></div><h1>ProductModel.java</h1><pre class="source lang-java linenums">package com.medeiros.SPRINGProject.Models;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
+public class ProductModel {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
+    public int getId() {
+<span class="nc" id="L16">        return id;</span>
+    }
+
+    public void setId(int id) {
+<span class="nc" id="L20">        this.id = id;</span>
+<span class="nc" id="L21">    }</span>
+
+    public int getProductId() {
+<span class="nc" id="L24">        return productId;</span>
+    }
+
+    public void setProductId(int productId) {
+<span class="nc" id="L28">        this.productId = productId;</span>
+<span class="nc" id="L29">    }</span>
+
+    public String getDescription() {
+<span class="nc" id="L32">        return description;</span>
+    }
+
+    public void setDescription(String description) {
+<span class="nc" id="L36">        this.description = description;</span>
+<span class="nc" id="L37">    }</span>
+
+    public double getPrice() {
+<span class="nc" id="L40">        return price;</span>
+    }
+
+    public void setPrice(double price) {
+<span class="nc" id="L44">        this.price = price;</span>
+<span class="nc" id="L45">    }</span>
+
+    public int getMusicId() {
+<span class="nc" id="L48">        return MusicId;</span>
+    }
+
+    public void setMusicId(int musicId) {
+<span class="nc" id="L52">        MusicId = musicId;</span>
+<span class="nc" id="L53">    }</span>
+
+    public int getUserId() {
+<span class="nc" id="L56">        return userId;</span>
+    }
+
+    public void setUserId(int userId) {
+<span class="nc" id="L60">        this.userId = userId;</span>
+<span class="nc" id="L61">    }</span>
+
+    public String getListProduct() {
+<span class="nc" id="L64">        return listProduct;</span>
+    }
+
+    public void setListProduct(String listProduct) {
+<span class="nc" id="L68">        this.listProduct = listProduct;</span>
+<span class="nc" id="L69">    }</span>
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int productId;
+
+    private String description;
+
+    private double price;
+
+    private int MusicId;
+
+    private int userId;
+
+    public ProductModel( String description,
+                        double price, int musicId, int userId,
+<span class="nc" id="L83">                        String listProduct) {</span>
+
+<span class="nc" id="L85">        this.description = description;</span>
+<span class="nc" id="L86">        this.price = price;</span>
+<span class="nc" id="L87">        this.MusicId = musicId;</span>
+<span class="nc" id="L88">        this.userId = userId;</span>
+<span class="nc" id="L89">        this.listProduct = listProduct;</span>
+<span class="nc" id="L90">    }</span>
+
+<span class="nc" id="L92">    public ProductModel(){</span>
+
+<span class="nc" id="L94">    }</span>
+
+    private String listProduct;
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>

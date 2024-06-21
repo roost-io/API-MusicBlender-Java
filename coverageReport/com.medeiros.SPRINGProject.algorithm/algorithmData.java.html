@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>algorithmData.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SPRINGProject</a> &gt; <a href="index.source.html" class="el_package">com.medeiros.SPRINGProject.algorithm</a> &gt; <span class="el_source">algorithmData.java</span></div><h1>algorithmData.java</h1><pre class="source lang-java linenums">package com.medeiros.SPRINGProject.algorithm;
+
+<span class="nc" id="L3">public class algorithmData {</span>
+
+    private int rithmPoints;
+
+    private boolean black_list;
+
+    public int getRithmPoints() {
+<span class="nc" id="L10">        return rithmPoints;</span>
+    }
+
+    public void setRithmPoints(int rithmPoints) {
+<span class="nc" id="L14">        this.rithmPoints = rithmPoints;</span>
+<span class="nc" id="L15">    }</span>
+
+    public boolean isBlack_list() {
+<span class="nc" id="L18">        return black_list;</span>
+    }
+
+    public void setBlack_list(boolean black_list) {
+<span class="nc" id="L22">        this.black_list = black_list;</span>
+<span class="nc" id="L23">    }</span>
+
+    public boolean isBlocked() {
+<span class="nc" id="L26">        return blocked;</span>
+    }
+
+    public void setBlocked(boolean blocked) {
+<span class="nc" id="L30">        this.blocked = blocked;</span>
+<span class="nc" id="L31">    }</span>
+
+    private boolean blocked;
+
+    public int rithmPointsByLike(int likes){
+<span class="nc" id="L36">        return likes*10;</span>
+    }
+
+    public int rithmPointsByComents(int coments){
+<span class="nc" id="L40">        return coments*15;</span>
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>

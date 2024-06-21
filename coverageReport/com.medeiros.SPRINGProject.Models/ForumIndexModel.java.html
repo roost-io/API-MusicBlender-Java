@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ForumIndexModel.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SPRINGProject</a> &gt; <a href="index.source.html" class="el_package">com.medeiros.SPRINGProject.Models</a> &gt; <span class="el_source">ForumIndexModel.java</span></div><h1>ForumIndexModel.java</h1><pre class="source lang-java linenums">package com.medeiros.SPRINGProject.Models;
+
+import jakarta.persistence.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@Entity
+@Table(name=&quot;ForumIndex&quot;)
+public class ForumIndexModel {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
+    private String ForumName;
+
+    public int getId() {
+<span class="nc" id="L18">        return id;</span>
+    }
+
+    public void setId(int id) {
+<span class="nc" id="L22">        this.id = id;</span>
+<span class="nc" id="L23">    }</span>
+
+    public String getForumName() {
+<span class="nc" id="L26">        return ForumName;</span>
+    }
+
+    public void setForumName(String forumName) {
+<span class="nc" id="L30">        ForumName = forumName;</span>
+<span class="nc" id="L31">    }</span>
+
+    public int getForumID() {
+<span class="nc" id="L34">        return ForumID;</span>
+    }
+
+    public void setForumID(int forumID) {
+<span class="nc" id="L38">        ForumID = forumID;</span>
+<span class="nc" id="L39">    }</span>
+
+    public String getForumDescription() {
+<span class="nc" id="L42">        return ForumDescription;</span>
+    }
+
+    public void setForumDescription(String forumDescription) {
+<span class="nc" id="L46">        ForumDescription = forumDescription;</span>
+<span class="nc" id="L47">    }</span>
+
+    public int getUserId() {
+<span class="nc" id="L50">        return userId;</span>
+    }
+
+    public void setUserId(int userId) {
+<span class="nc" id="L54">        this.userId = userId;</span>
+<span class="nc" id="L55">    }</span>
+
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int ForumID;
+
+    private String ForumDescription;
+
+    private int userId;
+<span class="nc" id="L63">    public ForumIndexModel(){</span>
+
+<span class="nc" id="L65">    }</span>
+<span class="nc" id="L66">    public ForumIndexModel(String forumName, int forumID, String forumDescription, int userId) {</span>
+<span class="nc" id="L67">        ForumName = forumName;</span>
+<span class="nc" id="L68">        ForumID = forumID;</span>
+<span class="nc" id="L69">        ForumDescription = forumDescription;</span>
+<span class="nc" id="L70">        this.userId = userId;</span>
+<span class="nc" id="L71">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>
