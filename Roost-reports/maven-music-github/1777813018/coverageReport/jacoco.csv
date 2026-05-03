@@ -1,0 +1,23 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+SPRINGProject,com.medeiros.SPRINGProject,SpringProjectApplication,8,0,0,0,3,0,2,0,2,0
+SPRINGProject,com.medeiros.SPRINGProject.Controllers,LogController,0,7,0,0,0,2,0,2,0,2
+SPRINGProject,com.medeiros.SPRINGProject.Controllers,AuthController,28,32,1,5,5,10,1,5,0,3
+SPRINGProject,com.medeiros.SPRINGProject.Controllers,MusicController,0,56,0,0,0,14,0,5,0,5
+SPRINGProject,com.medeiros.SPRINGProject.Controllers,PagesController,0,25,0,0,0,6,0,2,0,2
+SPRINGProject,com.medeiros.SPRINGProject.Controllers,ForumController,0,36,0,0,0,8,0,4,0,4
+SPRINGProject,com.medeiros.SPRINGProject.Controllers,UserAccountController,0,73,0,2,0,19,0,6,0,5
+SPRINGProject,com.medeiros.SPRINGProject.Controllers,MarketController,0,49,0,0,0,10,0,4,0,4
+SPRINGProject,com.medeiros.SPRINGProject.Controllers,AppController,0,119,0,0,0,25,0,6,0,6
+SPRINGProject,com.medeiros.SPRINGProject.Security,JwtUtil,109,0,8,0,30,0,9,0,5,0
+SPRINGProject,com.medeiros.SPRINGProject.Models,CommentsModel,45,9,0,0,20,4,13,1,13,1
+SPRINGProject,com.medeiros.SPRINGProject.Models,User_Credentials,28,15,0,0,13,6,8,2,8,2
+SPRINGProject,com.medeiros.SPRINGProject.Models,MusicModel,59,15,0,0,26,6,17,1,17,1
+SPRINGProject,com.medeiros.SPRINGProject.Models,ProductModel,52,18,0,0,23,7,15,1,15,1
+SPRINGProject,com.medeiros.SPRINGProject.Models,ForumChatModel,31,12,0,0,14,5,9,1,9,1
+SPRINGProject,com.medeiros.SPRINGProject.Models,User_Info,59,27,0,0,26,10,17,1,17,1
+SPRINGProject,com.medeiros.SPRINGProject.Models,LogModel,28,17,0,0,12,8,8,3,8,3
+SPRINGProject,com.medeiros.SPRINGProject.Models,ForumIndexModel,38,15,0,0,17,6,11,1,11,1
+SPRINGProject,com.medeiros.SPRINGProject.utils,hashMapFunctions.new Comparator() {...},0,11,0,0,0,2,0,2,0,2
+SPRINGProject,com.medeiros.SPRINGProject.utils,hashMapFunctions,3,37,0,2,1,7,1,2,1,1
+SPRINGProject,com.medeiros.SPRINGProject.algorithm,algorithmData,29,3,0,0,11,1,8,1,8,1
+SPRINGProject,com.medeiros.SPRINGProject.algorithm,algorithmBlender,46,8,2,0,11,2,2,1,1,1
